@@ -7,5 +7,28 @@
 </head>
 <body>
 	<script src='ambimage.js'></script>
+	<script>
+	// We create everything from javascript for needs in other projects, 
+	// But just creating a div and an image inside, then calling 
+	// ambimage.drawAmbimage is also okay.
+	function onImageReadyForDrawing(e) {
+	  var image = e ? e.target : document.getElementById("image"),
+	      imageWrapper = document.createElement('div');
+	  imageWrapper.appendChild(image);
+	  imageWrapper.id = 'image-wrap';
+	  image.parentNode.setAttribute('style', 'width: ' + image.width + "px");
+	  document.body.appendChild(imageWrapper);
+	  //image.setAttribute('class', 'toAnimate animated');
+	  setTimeout(ambimage.drawAmbimage, 1000);
+	}
+	
+	window.addEventListener("load",function() {
+	  var image = new Image();
+	  image.id = "image";
+	  image.addEventListener("load", onImageReadyForDrawing, false);
+	  image.src = "last.jpg";
+	  //image.setAttribute('class', 'toAnimate');
+	},false);
+	</script>
 </body>
 </html>
