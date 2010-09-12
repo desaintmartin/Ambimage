@@ -97,7 +97,6 @@ function calcMidColor(data, from, to) {
     j++
   }
   }
-  console.log(j);
   var result = [0, 0, 0];
   var total_pixels = (to - from) / 4;
 
@@ -139,12 +138,10 @@ function getMidColors(side) {
     img_data = buffer_ctx.getImageData(side == 'right' ? w - block_width : 0, 0, block_width, h),
     total_pixels = img_data.data.length;
 
-console.log(total_pixels);
   for (var i = 0; i < lamps; i++) {
     var from = i * w * block_width;
     result.push( calcMidColor(img_data.data, i * pxl, Math.min((i + 1) * pxl, total_pixels - 1)) );
   }
-  console.log(result);
   return result;
 }
 
