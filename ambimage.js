@@ -348,7 +348,7 @@ function onImageReadyForDrawing(e) {
   setTimeout(ambimage.drawAmbimage, 1000);
 }
 
-window.addEventListener("ldoad",function() {
+window.addEventListener("load",function() {
   var image = new Image();
   image.id = "image";
   image.addEventListener("load", onImageReadyForDrawing, false);
