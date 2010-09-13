@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="body.css">
   <link rel="stylesheet" href="ambimage.css">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
@@ -15,7 +16,7 @@
 	  var image = e ? e.target : document.getElementById("image"),
 	      imageWrapper = document.createElement('div');
 	  imageWrapper.appendChild(image);
-	  imageWrapper.id = 'image-wrap';
+	  imageWrapper.id = 'ambimage-wrap';
 	  image.parentNode.setAttribute('style', 'width: ' + image.width + "px");
 	  document.body.appendChild(imageWrapper);
 	  //image.setAttribute('class', 'toAnimate animated');
@@ -25,6 +26,7 @@
 	window.addEventListener("load",function() {
 	  var image = new Image();
 	  image.id = "image";
+	  image.setAttribute('class', 'ambimage');
 	  image.addEventListener("load", onImageReadyForDrawing, false);
 	  image.src = "last.jpg";
 	  //image.setAttribute('class', 'toAnimate');
