@@ -1,6 +1,7 @@
 /**
  * @author Cedric de Saint Martin 
  * This is a fork from Sergey Chikuyonok's Ambilight for images.
+ * Version 1.0.0
  */
 var ambimage = (function() {
 
@@ -326,8 +327,7 @@ function drawLight(id, side, canvas) {
 }
 
 return {
-  drawAmbimage: function(e) {
-    var image = document.getElementById("image");
+  drawAmbimage: function(image) {
     id = prepareImage(image);
     play_list.push(id);
     createSnapshot(id);

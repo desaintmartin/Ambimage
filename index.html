@@ -19,7 +19,7 @@
 	  image.parentNode.setAttribute('style', 'width: ' + image.width + "px");
 	  document.body.appendChild(imageWrapper);
 	  //image.setAttribute('class', 'toAnimate animated');
-	  setTimeout(ambimage.drawAmbimage, 1000);
+	  ambimage.drawAmbimage(image);
 	}
 	
 	window.addEventListener("load",function() {
