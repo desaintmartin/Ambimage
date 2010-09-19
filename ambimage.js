@@ -318,10 +318,20 @@ function drawLight(id, side, canvas) {
   
   // if we have old light, remove it
   var old_light = assets[side];
-  $(canvas).animate({opacity: 1}, getOption('fade_time'), 'linear', function() {
-    if (old_light)
-      old_light.parentNode.removeChild(old_light);
-  });
+    if (window.jQuery) {
+      $(canvas).animate({opacity: 1}, getOption('fade_time'), 'linear', function() {
+        if (old_light)
+          old_light.parentNode.removeChild(old_light);
+      });
+    } else if (window.dojo) {
+      dojo.animateProperty({ node: canvas, duration:getOption('fade_time'),
+        properties: { opacity: 1.0 },
+        onEnd: function() {
+          if (old_light)
+          old_light.parentNode.removeChild(old_light);
+        }
+      }).play();
+    }
   
   assets[side] = canvas;
 }
