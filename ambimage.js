@@ -270,7 +270,7 @@ function createLight(id, side) {
     if (assets['mask-' + side + '-loaded'])
       drawLight(id, side);
   } else {
-    var canvas = createCanvas(assets.image, 'ambilight-' + side);
+    var canvas = createCanvas(assets.image, 'ambimage-' + side);
     var mask_url = getCSS(canvas, 'background-image').replace(/^url\(['"]?|['"]?\)$/g, '');
     var img = new Image;
     img.onload = function() {
@@ -295,7 +295,7 @@ function drawLight(id, side, canvas) {
     image = assets.image;
   
   if (!canvas)
-    canvas = createCanvas(image, 'ambilight-' + side);
+    canvas = createCanvas(image, 'ambimage-' + side);
     
   /** @type {CanvasRenderingContext2D} */
   var ctx = canvas.getContext('2d');
