@@ -93,16 +93,14 @@ function getAssets(id) {
  * @return {Array} RGB-color
  */
 function calcMidColor(data, from, to) {
-  var j = 0;
-  for (i = 0; i<data.length; i++) {
-  if (data[i] !== 0) {
-    j++
-  }
-  }
-  var result = [0, 0, 0];
-  var total_pixels = (to - from) / 4;
+  var i, j = 0,
+      pixelSkip = parseInt((to - from) / 50),
+      //Each pixel is represented by r, g, b, a
+      dataSkip = pixelSkip * 4,
+      result = [0, 0, 0];
+      total_pixels = (to - from) / dataSkip;
 
-  for (var i = from; i <= to; i += 4) {
+  for (i = from; i <= to; i += dataSkip) {
     result[0] += data[i];
     result[1] += data[i + 1];
     result[2] += data[i + 2];
@@ -139,7 +137,6 @@ function getMidColors(side) {
     result = [],
     img_data = buffer_ctx.getImageData(side == 'right' ? w - block_width : 0, 0, block_width, h),
     total_pixels = img_data.data.length;
-
   for (var i = 0; i < lamps; i++) {
     var from = i * w * block_width;
     result.push( calcMidColor(img_data.data, i * pxl, Math.min((i + 1) * pxl, total_pixels - 1)) );
